@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head', {title: "Documents"}); %>
+    <link rel="stylesheet" href="/css/documents.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/accordion.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="/js/documents.js" defer></script>
+    <script src="/js/accordion.js" defer></script>
+</head>
+
+<body>
+  <header><%- include('../partials/navbar'); %></header>
+  <main>
+    <% if (documents.length == 0) { %>
+      <h1>No Documents Found</h1>
+      <p>On the final results page (the page with the summaries/explanations), press the "Save Online" button to save a document to this collection. All saved documents are private and only accessible by you.</p>
+    <% } else { %>
+      <div class="grid">
+        <% documents.forEach(function(document, index) { %>
+            <div class="openable">
+              <button class="header" onclick="openOpenable(this)">
+                <%= document.title %> ▼
+              </button>
+              <div class="content">
+                <div>
+                  <form action="/explain-text" method="POST" class="nobg">
+                    <div class="btn-container">
+                      <button type="submit" class="explain">Explain</button>
+                      <button data-id="<%= document.id %>" class="delete">Delete</button>
+                      <button data-id="<%= document.id %>" data-index="<%= index %>" class="update">Save Changes</button>
+                    </div>
+                    <label for="formName<%= index %>">Document Title:</label>
+                    <input type="text" id="formName<%= index %>" name="formName" value="<%= document.title %>" required />
+                    <label for="documentContent<%= index %>">Document Content:</label>
+                    <textarea class="documentContent" id="documentContent<%= index %>" name="documentContent" data-content="<%= document.content %>" rows="25" cols="80" required><%= document.content %></textarea>
+                  </form>
+                </div>
+              </div>
+            </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </main>
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+</body>
+
+</html>

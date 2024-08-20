@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head', {title: undefined}); %>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/accordion.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
+    <script src="/js/accordion.js" defer></script>
+</head>
+
+<body>
+  <% if (user) { %>
+    <header><%- include('../partials/navbar'); %></header>
+  <% } %>
+  <main>
+    <div class="main">
+      <div class="main-content">
+        <picture>
+            <source media="(min-width: 400px)" srcset="media/logo.png">
+            <img src="media/logo_small.png" alt="Legal Lieutenant">
+        </picture>
+        <% if (user) { %>
+          <div class="buttons">
+            <a href="/explain">Explain Document</a>
+            <a href="/generate">Generate Document</a>
+          </div>
+          <h2>Welcome, <%= user.username %></h2>
+          <span><a href="/logout" class="logout" aria-label="log out"></a></span>
+        <% } else { %>
+          <div>
+            <span><a href="/signup" class="signup" aria-label="sign up"></a></span>
+            <span><a href="/login" class="login" aria-label="log in"></a></span>
+          </div>
+        <% } %>
+        <div class="arrowdiv bounce">
+          <a href="#howToUse" aria-label="scroll down">
+            <img class="arrow" src="media/downArrow.png" alt="Scroll Down">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="section left">
+      <h3 id="howToUse">How To Use</h3>
+
+      <div class="container">
+        <div class="openable">
+          <button class="header" id="btn1" onclick="openOpenable(this)">
+            Explain page ▼
+          </button>
+          <div class="content">
+            <ol>
+              <li>Provide a document title</li>
+              <li>Upload a PDF, DOC, DOCX, etc., or enter the document's text</li>
+              <li>Press submit</li>
+              <li>Once the explain results screen loads, hover over any section to see a section summary and potential
+                concerning areas
+              </li>
+              <li>Press the toggle button to switch between the summary and raw-text views</li>
+              <li>In the raw-text view, highlight or double-click on a word to see its definition
+                <ul>
+                  <li>The definition will appear in a pop-up</li>
+                  <li>You must have one and only one word selected; otherwise, we will assume that you are just trying
+                    to
+                    copy a part of the document</li>
+                </ul>
+              </li>
+              <li>Download a document locally or save it to your account using the buttons at the top of the page</li>
+            </ol>
+          </div>
+        </div>
+        <div class="openable">
+          <button class="header" id="btn1" onclick="openOpenable(this)">
+            Generate page ▼
+          </button>
+          <div class="content">
+            <ol>
+              <li>Provide the document title
+                <ul>
+                  <li>If you don't know the specific title, provide the document category, such as "immigration
+                    papers," and the document will be inferred</li>
+                </ul>
+              </li>
+              <li>If you have a sample/template/information document to upload:
+                <ol>
+                  <li>Upload the document</li>
+                  <li>Provide additional information about your situation and/or the document</li>
+                  <li>Press submit</li>
+                  <li>A new screen will be presented with an outline generated based on your uploaded document and a
+                    prompt asking for more information</li>
+                  <li>Edit the outline and provide more information if needed (if you do not provide certain pieces of
+                    information, the corresponding sections will be left blank in the generated document)</li>
+                  <li>Press submit</li>
+                </ol>
+              </li>
+              <li>Otherwise, if you do not have a sample/template/information document to upload:
+                <ol>
+                  <li>Provide all applicable information about your situation, and include as much information about the
+                    document itself as possible</li>
+                  <li>Press submit</li>
+                </ol>
+              </li>
+              <li>Once the generate results screen loads, edit the document as desired
+                <ol>
+                  <li>Blanks will be present where the AI model did not have enough information to fill something, so
+                    make
+                    sure to fill in those parts carefully</li>
+                  <li>Press submit</li>
+                </ol>
+              </li>
+              <li>The explain results page screen will then appear with the generated document already populated</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="section">
+        <h3>Our Key Features</h3>
+        <div class="features">
+          <div class="feature">
+            <h4>Decomposition</h4>
+            <p>Break down a big document into smaller pieces.</p>
+          </div>
+          <div class="feature">
+            <h4>Summarization</h4>
+            <p>Summarize sections and define words within your documents.</p>
+          </div>
+          <div class="feature">
+            <h4>Issue Identification</h4>
+            <p>Highlight loopholes, issues, or places where there is potential for confusion within each section.</p>
+          </div>
+          <div class="feature">
+            <h4>Document Generation</h4>
+            <p>Generate custom legal documents from scratch with ease.</p>
+          </div>
+          <div class="feature">
+            <h4>Context Inclusion</h4>
+            <p>Use the provided information and common knowledge to automate as much as possible.</p>
+          </div>
+        </div>
+      </div>
+  </main>
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+</body>
+
+</html>

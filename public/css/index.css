@@ -1,0 +1,262 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 2rem;
+}
+
+.container {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+img {
+  width: 50vh;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+span {
+  margin-top: 20px;
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  perspective: 1000px;
+}
+
+span a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform 0.25s;
+  font-family: "Varela", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+h4 {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+p {
+  font-family: "Varela", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+span a.signup:before,
+span a.signup:after {
+  content: "SIGN UP";
+}
+
+span a.login:before,
+span a.login:after {
+  content: "LOG IN";
+}
+
+span a.logout:before,
+span a.logout:after {
+  content: "LOG OUT";
+}
+
+span a:before,
+span a:after {
+  position: absolute;
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #3c3c3c;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: "Varela", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+span a:before {
+  color: #fff;
+  background-color: #3c3c3c;
+  transform: rotateY(0deg) translateZ(25px);
+}
+
+span a:after {
+  color: #3c3c3c;
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+span a:hover {
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+h3 {
+  color: #3c3c3c;
+  font-family: "Varela", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.main {
+  background-color: whitesmoke;
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3c3c3c;
+  text-align: center;
+  position: relative;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+.main p {
+  margin: 15px 0;
+  font-size: 2em;
+}
+
+.buttons {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media screen and (max-width: 415px) {
+  .buttons {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.buttons a {
+  color: white;
+  padding: 0.5rem;
+  background-color: #3c3c3c;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.5s;
+  display: inline-block;
+  font-family: "Varela", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.buttons a:hover {
+  background-color: whitesmoke;
+  color: #3c3c3c;
+}
+
+.section {
+  padding: 40px 20px;
+  min-height: 40vh;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.section h3 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.section.left {
+  background-color: whitesmoke;
+  text-align: left;
+}
+
+.section.left h3 {
+  text-align: center;
+}
+
+.features {
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: whitesmoke;
+  transition: background-color 0.5s;
+  border: grey 2px solid;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 300px;
+  text-align: left;
+  color: #3c3c3c;
+}
+
+.feature:hover {
+  background-color: #3c3c3c;
+  color: whitesmoke;
+}
+
+.feature h4 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.feature p {
+  text-align: center;
+}
+
+.arrowdiv {
+  margin-top: 100px;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+}
+
+.bounce {
+  animation: bounce 2.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-45px);
+  }
+  60% {
+    transform: translateY(-20px);
+  }
+}
+
+@media screen and (max-width: 399px) {
+  img {
+    width: 60vw;
+    aspect-ratio: 1 / 1;
+  }
+}
